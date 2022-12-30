@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 const app = express();
 const path = require('path')
 
@@ -11,6 +12,7 @@ const categories = require("./routes/categoryRoutes")
 const upload = require("./routes/uploadRoutes")
 
 app.use(express.json())
+app.use(cors({origin: "https://blogcodewithreach.onrender.com"}))
 app.use("/images", express.static(path.join(__dirname, "/images")))
 mongoose.set('strictQuery', false);
 // connect to db
