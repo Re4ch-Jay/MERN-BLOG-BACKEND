@@ -15,7 +15,7 @@ app.use("/images", express.static(path.join(__dirname, "/images")))
 mongoose.set('strictQuery', false);
 // connect to db
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true,
-    useUnifiedTopology: true,})
+  useUnifiedTopology: true})
     .then(res => {
         app.listen(process.env.PORT, () => {
             console.log('Server is running on Port ' + process.env.PORT + ' connected to db')
