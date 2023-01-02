@@ -35,13 +35,17 @@ const GET_POST = async (req, res) => {
 const GET_ALL_POSTS = async (req, res) => {
     const username = req.query.username;
     const catName = req.query.category;
+    const title = req.query.title;
     try {
         let posts;
         if(username) {
             posts = await Post.find({username})
         }else if(catName) {
             posts = await Post.find({categories: {$in: [catName]}})
-        }else{
+        }else if(title) {
+            posts = await Post.find({title})
+        }
+        else{
             posts = await Post.find();
         }
         if(!posts) throw Error("Cannot find posts");
